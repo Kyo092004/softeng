@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Portfolio Website</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: #b74b4b;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 3rem;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ff6f61;
+    border-bottom: 3px solid #ff6f61;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: #ff6f61;
+}
+
+@media (max-width: 995px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100vh;
+        background-color: #161616;
+        border-left: 3px solid #161616;
+        border-bottom: 3px solid #161616;
+        border-top: 0.1rem solid rgba(0,0,0,0.1);
+        padding: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        z-index: 99;
+    }
+
+    nav.active {
+        transform: translateX(0);
+    }
+
+    nav a {
+        display: block;
+        font-size: 2rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background: #161616;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+    }
+
+    nav a:hover,
+    nav a.active {
+        background: #ff6f61;
+        color: #fff;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 30px 50px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .container .contactinfo,
+    .container .contactform {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contactform h2 {
+        font-size: 24px;
+    }
+
+    .contactform .inputbox input,
+    .contactform .inputbox textarea {
+        font-size: 14px;
+    }
+
+    nav {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 20px;
+    }
+
+    .contact .content{
+        margin-top: 100px;
+    }
+    .contact .content h2 {
+        font-size: 28px;
+    }
+
+    .contact .content p {
+        font-size: 14px;
+    }
+
+    .contactform h2 {
+        font-size: 22px;
+    }
+
+    .contactform .inputbox input,
+    .contactform .inputbox textarea {
+        font-size: 12px;
+    }
+
+    .contactform .inputbox input[type="submit"] {
+        font-size: 16px;
+    }
+
+    nav {
+        width: 100%;
+    }
+}
+
+.contact{
+    position: relative;
+    min-height: 100vh;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact .content{
+    max-width: 800px;
+    text-align: center;
+}
+
+.contact .content h2{
+    font-size: 3.6rem;
+    font-weight: 500;
+    color: #ff6f61;
+}
+
+.contact .content p{
+    font-weight: 300;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container .contactinfo,
+.container .contactform {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.container .contactinfo .box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+
+.container .contactinfo .box .icon{
+    min-width: 60px;
+    height: 60px;
+    background: #ff6f61;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 2.2rem;
+}
+
+.container .contactinfo .box .text{
+    display: flex;
+    font-size: 1.6rem;
+    margin-left: 20px;
+    color: #fff;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+.container .contactinfo .box .text h3{
+    font-weight: 600;
+    color: #ff6f61;
+}
+
+.contactform {
+    width: 100%;
+    padding: 15px;
+    background: #161616;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.contactform h2 {
+    font-size: 2.8rem;
+    color: #ff6f61;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contactform .inputbox {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contactform .inputbox input,
+.contactform .inputbox textarea {
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #444;
+    font-size: 1.6rem;
+    transition: 0.3s;
+}
+
+.contactform .inputbox input:focus,
+.contactform .inputbox textarea:focus {
+    border-color: #ff6f61;
+    background: #333;
+}
+
+.contactform .inputbox span {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.6rem;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.contactform .inputbox input:focus ~ span,
+.contactform .inputbox input:valid ~ span,
+.contactform .inputbox textarea:focus ~ span,
+.contactform .inputbox textarea:valid ~ span {
+    top: -20px;
+    left: 0;
+    color: #ff6f61;
+    font-size: 1.4rem;
+}
+
+.contactform .inputbox textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contactform .inputbox input[type="submit"] {
+    width: 100%;
+    background: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+    border: none;
+    font-size: 1.8rem;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+.contactform .inputbox input[type="submit"]:hover {
+    background: #e65c55;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Software Engineering</a>
+        <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+    <section class="contact">
+        <div class="content">
+            <h2>Contact Me</h2>
+            <p>If you have any questions, feel free to reach out to me by using through the contact form below. I would love to hear any suggestions that you would give me!</p>
+        </div>
+        <div class="container">
+            <div class="contactinfo">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="text">
+                        <h3>Address</h3>
+                        <p>Barangay San Jose, Plaridel Street. <br>
+                        Concepcion, Tarlac <br>
+                        Philippines</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <div class="text">
+                        <h3>Phone</h3>
+                        <p>+63 945 728 6322</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                    <div class="text">
+                        <h3>Email</h3>
+                        <p>codingkoto@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contactform">
+                <h2>Send a Message</h2>
+                <form>
+                    <div class="inputbox">
+                        <input type="text" name="name" required>
+                        <span>Full Name</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" name="email" required>
+                        <span>Email Address</span>
+                    </div>
+                    <div class="inputbox">
+                        <textarea required></textarea>
+                        <span>Your Message</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="submit" value="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
